@@ -24,6 +24,7 @@
             $this->setUrl();
             $this->setCheckinsCount();
             $this->setHereNowCount();
+            $this->venue_data = null;
         }
 
         function setId() {
