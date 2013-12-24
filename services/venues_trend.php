@@ -6,6 +6,6 @@
             '13.735889,100.561302',
             '20131223'
         );
-    header('Content-type: application/json');
+    header('Content-type: application/json; charset=utf-8');
     echo $json_return;
 ?>
