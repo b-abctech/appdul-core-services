@@ -12,10 +12,9 @@
         public $venue_data = array();
 
         /*
-            set venue data and bind them to properties
+            set bind them to properties
         */
-        public function setVenue( $venue_array ) {
-            $this->venue_data = &$venue_array;
+        public function prepare() {
             $this->setId();
             $this->setName();
             $this->setPhone();
@@ -25,6 +24,10 @@
             $this->setCheckinsCount();
             $this->setHereNowCount();
             $this->venue_data = null;
+        }
+
+        function initVenueData( $venue_array ){
+            $this->venue_data = &$venue_array;
         }
 
         function setId() {

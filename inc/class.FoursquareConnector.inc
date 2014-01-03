@@ -1,6 +1,7 @@
 <?php
     
     require_once('../inc/class.Venue.inc');
+    require_once('../inc/class.VenueDetail.inc');
 
     define('CLIENT_ID','2C0ODWQ4A1NTTHW3XCEEPEC3G5OERW0K52POFTZU25H4PLGP');
     define('CLIENT_SECRET','3CUHR0GR1ZZLX5F53VS2F3OH35ZZ2KPK5NFRKBY5SKLAYO1U');
@@ -16,7 +17,6 @@
                     '&client_id=2C0ODWQ4A1NTTHW3XCEEPEC3G5OERW0K52POFTZU25H4PLGP'.
                     '&client_secret=3CUHR0GR1ZZLX5F53VS2F3OH35ZZ2KPK5NFRKBY5SKLAYO1U'.
                     "&v=$date";
-
             $json = file_get_contents( $url );
             $data = json_decode( $json, TRUE );
             // loop from data from foursquare to bind into Venue objects list
@@ -24,7 +24,8 @@
 
             foreach ($data['response']['venues'] as $venue_array ) {
                 $venue = new Venue;
-                $venue->setVenue( $venue_array );
+                $venue->initVenueData( $venue_array );
+                $venue->prepare();
                 array_push( $venues , $venue );
             }
 
@@ -38,14 +39,15 @@
         */
         public function getVenue( $venue_id, $date ){
             $url    = 'https://api.foursquare.com/v2/venues/'.$venue_id.'?'.
-                    '&client_id=2C0ODWQ4A1NTTHW3XCEEPEC3G5OERW0K52POFTZU25H4PLGP'.
+                    'client_id=2C0ODWQ4A1NTTHW3XCEEPEC3G5OERW0K52POFTZU25H4PLGP'.
                     '&client_secret=3CUHR0GR1ZZLX5F53VS2F3OH35ZZ2KPK5NFRKBY5SKLAYO1U'.
                     "&v=$date";
             $json   = file_get_contents( $url );
             $data   = json_decode( $json, TRUE );
 
-            $venue = new Venue;
-            $venue->setVenue( $data['response']['venue'] );
+            $venue = new VenueDetail;
+            $venue->initVenueData( $data['response']['venue'] );
+            $venue->prepare();
 
             $json_return = json_encode( $venue );
 
