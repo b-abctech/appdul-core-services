@@ -14,6 +14,7 @@
         public function getVenuesTrending( $latlong, $date ) {
             $url = 'https://api.foursquare.com/v2/venues/trending?'.
                     "ll=$latlong".
+                    //'near=Bangkok'.
                     '&client_id=2C0ODWQ4A1NTTHW3XCEEPEC3G5OERW0K52POFTZU25H4PLGP'.
                     '&client_secret=3CUHR0GR1ZZLX5F53VS2F3OH35ZZ2KPK5NFRKBY5SKLAYO1U'.
                     "&v=$date";
