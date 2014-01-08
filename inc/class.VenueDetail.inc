@@ -3,7 +3,7 @@
     class VenueDetail extends Venue {
 
         public $imageURL;
-        public $imageThumbURL;
+        
         public $opentime;
         public $description;
 
