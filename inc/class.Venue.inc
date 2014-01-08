@@ -39,33 +39,39 @@
         }
 
         function setPhone() {
-            $this->phone = (!empty($this->venue_data['contact'])) ? 
-                                $this->venue_data['contact']['phone']:'';
+            if(!empty($this->venue_data['contact']) && 
+                !empty($this->venue_data['contact']['phone']))
+                    $this->phone = $this->venue_data['contact']['phone'];
         }
 
         function setAddress() {
-            $this->address = (!empty($this->venue_data['location'])) ? 
-                                $this->venue_data['location']['address']:'';
+            if(!empty($this->venue_data['location']) && 
+                !empty($this->venue_data['location']['address']))
+                    $this->address = $this->venue_data['location']['address'];
         }
 
         function setCategoryName() {
-            $this->categoryName = (!empty($this->venue_data['categories'])) ? 
-                                $this->venue_data['categories'][0]['name']:'';
+            if(!empty($this->venue_data['categories']) && 
+                !empty($this->venue_data['categories'][0]) &&
+                !empty($this->venue_data['categories'][0]['name']))
+                    $this->categoryName = $this->venue_data['categories'][0]['name'];
         }
 
         function setUrl() {
-            $this->url = (!empty($this->venue_data['url'])) ? 
-                                $this->venue_data['url']:'';
+            if(!empty($this->venue_data['url']))
+                $this->url = $this->venue_data['url'];
         }
 
         function setCheckinsCount() {
-            $this->checkinsCount = (!empty($this->venue_data['stats'])) ? 
-                                $this->venue_data['stats']['checkinsCount']:'';
+            if(!empty($this->venue_data['stats']) && 
+                !empty($this->venue_data['stats']['checkinsCount']))
+                    $this->checkinsCount = $this->venue_data['stats']['checkinsCount'];
         }
 
         function setHereNowCount() {
-            $this->hereNowCount = (!empty($this->venue_data['hereNow'])) ? 
-                                $this->venue_data['hereNow']['count']:'';
+            if(!empty($this->venue_data['hereNow']) && 
+                !empty($this->venue_data['hereNow']['count']))
+                    $this->hereNowCount =$this->venue_data['hereNow']['count'];
         }
     }
 ?>
