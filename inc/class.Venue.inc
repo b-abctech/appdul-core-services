@@ -1,13 +1,13 @@
 <?php
     class Venue {
-        public $id;
-        public $name;
-        public $phone;
-        public $address;
-        public $categoryName;
-        public $url;
-        public $checkinsCount;
-        public $hereNowCount;
+        public $id = '';
+        public $name = '';
+        public $phone = '';
+        public $address = '';
+        public $categoryName = '';
+        public $url = '';
+        public $checkinsCount = 0;
+        public $hereNowCount = 0;
 
         public $venue_data = array();
 
